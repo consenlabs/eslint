@@ -27,7 +27,7 @@ module.exports = {
     process: true,
   },
 
-  rules: rules,
+  rules,
 
   plugins: ['markdown'],
 }

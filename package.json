@@ -9,7 +9,7 @@
     "url": "https://github.com/consenlabs/eslint"
   },
   "workspaces": [
-    "packages/*"
+    "packages/**/*"
   ],
   "prettier": "@consenlabs-fe/prettier",
   "scripts": {

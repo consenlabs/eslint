@@ -2,23 +2,18 @@ const rules = require('./rules')
 
 module.exports = {
   parser: '@typescript-eslint/parser',
-
-  plugins: ['@typescript-eslint'],
-
+  plugins: ['@typescript-eslint', 'custom'],
   root: true,
-
   env: {
     browser: true,
     node: true,
     es6: true,
   },
-
   globals: {
     require: true,
     Promise: true,
     process: true,
   },
-
   parserOptions: {
     ecmaVersion: '2018',
     sourceType: 'module',
@@ -27,6 +22,5 @@ module.exports = {
       legacyDecorators: true,
     },
   },
-
   rules,
 }
