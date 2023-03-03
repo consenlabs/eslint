@@ -1,11 +1,14 @@
 {
-  "name": "eslint-plugin-custom",
-  "version": "1.0.0",
+  "name": "@consenlabs-fe/eslint-plugin-custom",
+  "version": "0.3.4",
   "description": "",
   "main": "dist/plugin/index.js",
   "scripts": {
     "dev": "tsc --build tsconfig.json -w",
     "build": "tsc --build tsconfig.json"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [],
   "author": "",

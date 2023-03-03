@@ -1,6 +1,6 @@
 {
   "name": "@consenlabs-fe/eslint-config",
-  "version": "0.2.3",
+  "version": "0.3.4",
   "main": "index.js",
   "license": "MIT",
   "description": "Eslint configuration for Consenlabs team",
