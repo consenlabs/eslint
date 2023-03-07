@@ -2,7 +2,7 @@ const rules = require('./rules')
 
 module.exports = {
   parser: '@typescript-eslint/parser',
-  plugins: ['@typescript-eslint', 'custom'],
+  plugins: ['@typescript-eslint', '@consenlabs-fe'],
   root: true,
   env: {
     browser: true,
@@ -16,6 +16,7 @@ module.exports = {
   },
   parserOptions: {
     ecmaVersion: '2018',
+
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,

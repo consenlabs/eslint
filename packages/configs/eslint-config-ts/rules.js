@@ -4,7 +4,7 @@ module.exports = {
   '@typescript-eslint/no-var-requires': 'error',
   '@typescript-eslint/array-type': 'off',
   camelcase: 'off',
-  'custom/no-deprecated-type-name-prefix': 'warn',
+  '@consenlabs-fe/no-deprecated-type-name-prefix': 'warn',
   '@typescript-eslint/camelcase': 'off',
   '@typescript-eslint/class-name-casing': 'off',
   '@typescript-eslint/explicit-function-return-type': 'off',

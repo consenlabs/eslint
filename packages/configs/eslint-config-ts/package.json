@@ -19,9 +19,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "version": "0.3.5",
+  "version": "0.3.6",
   "dependencies": {
-    "@consenlabs-fe/eslint-plugin-custom": "^0.3.5",
+    "@consenlabs-fe/eslint-plugin": "^0.3.6",
     "@typescript-eslint/eslint-plugin": "^5.54.0",
     "@typescript-eslint/parser": "^5.54.0"
   }
