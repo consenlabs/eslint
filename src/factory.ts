@@ -13,6 +13,7 @@ import {
   jsonc,
   sortPackageJson,
   sortTsconfig,
+  imports,
 } from './configs'
 import type { ConfigNames, RuleOptions } from './typegen'
 
@@ -53,6 +54,9 @@ export function consenlabs(
     javascript({
       isInEditor,
       overrides: getOverrides(options, 'javascript'),
+    }),
+    imports({
+      stylistic: stylisticOptions,
     }),
   )
 
