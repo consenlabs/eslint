@@ -83,6 +83,15 @@ export interface OptionsStylistic {
   stylistic?: boolean | StylisticConfig
 }
 
+export interface OptionsUnicorn extends OptionsOverrides {
+  /**
+   * Include all rules recommended by `eslint-plugin-unicorn`, instead of only ones picked by Teams.
+   *
+   * @default false
+   */
+  recommended?: boolean
+}
+
 export interface ConfigOptions extends OptionsProjectType {
   /**
    * Core rules. Can't be disabled.
@@ -130,6 +139,13 @@ export interface ConfigOptions extends OptionsProjectType {
    * @default true
    */
   jsonc?: boolean | OptionsOverrides
+
+  /**
+   * Options for eslint-plugin-unicorn.
+   *
+   * @default true
+   */
+  unicorn?: boolean | OptionsUnicorn
 
   /**
   * Control to disable some rules in editors.

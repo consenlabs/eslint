@@ -53,11 +53,12 @@
     "@typescript-eslint/eslint-plugin": "catalog:prod",
     "@typescript-eslint/parser": "catalog:prod",
     "eslint-flat-config-utils": "catalog:prod",
-    "eslint-plugin-import-x": "^4.12.2",
-    "eslint-plugin-jsonc": "^2.20.1",
+    "eslint-plugin-import-x": "catalog:prod",
+    "eslint-plugin-jsonc": "catalog:prod",
+    "eslint-plugin-unicorn": "catalog:prod",
     "eslint-plugin-unused-imports": "catalog:prod",
     "globals": "catalog:prod",
-    "jsonc-eslint-parser": "^2.4.0",
+    "jsonc-eslint-parser": "catalog:prod",
     "local-pkg": "catalog:prod"
   },
   "devDependencies": {

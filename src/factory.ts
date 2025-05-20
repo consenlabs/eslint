@@ -1,6 +1,6 @@
 import type { Awaitable, ConfigOptions, TypedFlatConfigItem } from './types'
 import { isPackageExists } from 'local-pkg'
-import { isInEditorEnv } from './utils'
+import { isInEditorEnv as isInEditorEnvironment } from './utils'
 import type { Linter } from 'eslint'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
 import {
@@ -14,6 +14,7 @@ import {
   sortPackageJson,
   sortTsconfig,
   imports,
+  unicorn,
 } from './configs'
 import type { ConfigNames, RuleOptions } from './typegen'
 
@@ -25,11 +26,12 @@ export function consenlabs(
     typescript: enableTypeScript = isPackageExists('typescript'),
     jsx: enableJsx = false,
     react: enableReact = false,
+    unicorn: enableUnicorn = true,
   } = options
 
   let isInEditor = options.isInEditor
-  if (isInEditor == null) {
-    isInEditor = isInEditorEnv()
+  if (isInEditor === undefined) {
+    isInEditor = isInEditorEnvironment()
     if (isInEditor)
       // eslint-disable-next-line no-console
       console.log('[@consenlabs-fe/eslint-config] Detected running in editor, some rules are disabled.')
@@ -37,9 +39,9 @@ export function consenlabs(
 
   const stylisticOptions = options.stylistic === false
     ? false
-    : typeof options.stylistic === 'object'
-      ? options.stylistic
-      : {}
+    : (typeof options.stylistic === 'object'
+        ? options.stylistic
+        : {})
 
   if (stylisticOptions && !('jsx' in stylisticOptions))
     stylisticOptions.jsx = enableJsx
@@ -59,6 +61,9 @@ export function consenlabs(
       stylistic: stylisticOptions,
     }),
   )
+
+  if (enableUnicorn)
+    configs.push(unicorn(enableUnicorn === true ? {} : enableUnicorn))
 
   if (enableJsx)
     configs.push(jsx())
