@@ -4,7 +4,7 @@ catalogs:
     typescript: ^5.8.3
     "@eslint/config-inspector": ^1.0.2
     eslint-typegen: ^2.2.0
-    '@types/node': ^22.15.19
+    "@types/node": ^22.15.19
     tsx: ^4.19.4
     jiti: ^2.4.2
   peer:
@@ -15,6 +15,10 @@ catalogs:
   prod:
     "@stylistic/eslint-plugin": ^4.2.0
     "@typescript-eslint/parser": ^8.32.1
-    'local-pkg': ^1.1.1
+    "local-pkg": ^1.1.1
     eslint-flat-config-utils: ^2.0.1
-    '@typescript-eslint/eslint-plugin': ^8.32.1
+    "@typescript-eslint/eslint-plugin": ^8.32.1
+    globals: ^16.1.0
+    "eslint-plugin-unused-imports": "^4.1.4"
+    "@antfu/install-pkg": "^1.1.0"
+    "@clack/prompts": "^0.10.1"

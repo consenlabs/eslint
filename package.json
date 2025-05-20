@@ -57,14 +57,14 @@
     "typescript": "catalog:dev"
   },
   "dependencies": {
-    "@antfu/install-pkg": "^1.1.0",
-    "@clack/prompts": "^0.10.1",
+    "@antfu/install-pkg": "catalog:prod",
+    "@clack/prompts": "catalog:prod",
     "@stylistic/eslint-plugin": "catalog:prod",
     "@typescript-eslint/eslint-plugin": "catalog:prod",
     "@typescript-eslint/parser": "catalog:prod",
     "eslint-flat-config-utils": "catalog:prod",
-    "eslint-plugin-unused-imports": "^4.1.4",
-    "globals": "^16.1.0",
+    "eslint-plugin-unused-imports": "catalog:prod",
+    "globals": "catalog:prod",
     "local-pkg": "catalog:prod"
   }
 }
