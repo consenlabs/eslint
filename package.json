@@ -24,7 +24,8 @@
     "build": "tsdown --clean --dts",
     "dev": "npx @eslint/config-inspector --config eslint.config.js",
     "typegen": "tsx scripts/typegen.ts",
-    "lint": "eslint"
+    "lint": "eslint",
+    "prepare": "simple-git-hooks"
   },
   "publishConfig": {
     "access": "public"
@@ -69,8 +70,16 @@
     "eslint": "catalog:peer",
     "eslint-typegen": "catalog:dev",
     "jiti": "catalog:dev",
+    "lint-staged": "catalog:dev",
+    "simple-git-hooks": "catalog:dev",
     "tsdown": "catalog:dev",
     "tsx": "catalog:dev",
     "typescript": "catalog:dev"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
