@@ -9,15 +9,20 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: checkout
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v3
+        with:
+          version: latest
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 22.15.1
-          registry-url: https://registry.npmjs.org/
-      - name: install
-        run: npm i
-      - name: set dist-tag
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Set release tag
         run: |
           case "${{github.event.release.name}}" in
           *"rc"* | *"canary"*)
@@ -29,7 +34,8 @@ jobs:
           *)
            echo "r_tag=latest" >> $GITHUB_ENV;;
           esac
-      - name: publish
+
+      - name: Publish to registry
         run: |
           echo ">> dist-tag: ${{ env.r_tag }}"
           npm run release --tag ${{ env.r_tag }}
