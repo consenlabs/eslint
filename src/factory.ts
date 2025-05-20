@@ -3,7 +3,17 @@ import { isPackageExists } from 'local-pkg'
 import { isInEditorEnv } from './utils'
 import type { Linter } from 'eslint'
 import { FlatConfigComposer } from 'eslint-flat-config-utils'
-import { jsx, typescript, javascript, react, stylistic, ignores } from './configs'
+import {
+  jsx,
+  typescript,
+  javascript,
+  react,
+  stylistic,
+  ignores,
+  jsonc,
+  sortPackageJson,
+  sortTsconfig,
+} from './configs'
 import type { ConfigNames, RuleOptions } from './typegen'
 
 export function consenlabs(
@@ -55,6 +65,16 @@ export function consenlabs(
       overrides: getOverrides(options, 'typescript'),
       type: options.type,
     }))
+
+  if (options.jsonc ?? true)
+    configs.push(
+      jsonc({
+        overrides: getOverrides(options, 'jsonc'),
+        stylistic: stylisticOptions,
+      }),
+      sortPackageJson(),
+      sortTsconfig(),
+    )
 
   if (stylisticOptions)
     configs.push(stylistic({

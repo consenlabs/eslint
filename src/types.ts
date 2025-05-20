@@ -79,6 +79,10 @@ export interface OptionsIsInEditor {
   isInEditor?: boolean
 }
 
+export interface OptionsStylistic {
+  stylistic?: boolean | StylisticConfig
+}
+
 export interface ConfigOptions extends OptionsProjectType {
   /**
    * Core rules. Can't be disabled.
@@ -119,6 +123,14 @@ export interface ConfigOptions extends OptionsProjectType {
    * @default false
    */
   react?: boolean | OptionsOverrides
+
+  /**
+   * Enable JSONC support.
+   *
+   * @default true
+   */
+  jsonc?: boolean | OptionsOverrides
+
   /**
   * Control to disable some rules in editors.
   * @default auto-detect based on the process.env

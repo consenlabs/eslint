@@ -2,6 +2,13 @@
   "name": "@consenlabs-fe/eslint-config",
   "type": "module",
   "version": "1.0.0-alpha.0",
+  "packageManager": "pnpm@10.10.0",
+  "description": "Flat eslint configuration for Consenlabs team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/consenlabs/eslint"
+  },
   "exports": {
     ".": "./dist/index.js"
   },
@@ -10,12 +17,6 @@
   "files": [
     "dist"
   ],
-  "license": "MIT",
-  "description": "Flat eslint configuration for Consenlabs team",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/consenlabs/eslint"
-  },
   "workspaces": [
     "packages/*"
   ],
@@ -28,7 +29,6 @@
   "publishConfig": {
     "access": "public"
   },
-  "packageManager": "pnpm@10.10.0",
   "peerDependencies": {
     "@eslint-react/eslint-plugin": "^1.38.4",
     "eslint": "^9.10.0",
@@ -36,15 +36,28 @@
     "eslint-plugin-react-refresh": "^0.4.20"
   },
   "peerDependenciesMeta": {
+    "@eslint-react/eslint-plugin": {
+      "optional": true
+    },
     "eslint-plugin-react-hooks": {
       "optional": true
     },
     "eslint-plugin-react-refresh": {
       "optional": true
-    },
-    "@eslint-react/eslint-plugin": {
-      "optional": true
     }
+  },
+  "dependencies": {
+    "@antfu/install-pkg": "catalog:prod",
+    "@clack/prompts": "catalog:prod",
+    "@stylistic/eslint-plugin": "catalog:prod",
+    "@typescript-eslint/eslint-plugin": "catalog:prod",
+    "@typescript-eslint/parser": "catalog:prod",
+    "eslint-flat-config-utils": "catalog:prod",
+    "eslint-plugin-jsonc": "^2.20.1",
+    "eslint-plugin-unused-imports": "catalog:prod",
+    "globals": "catalog:prod",
+    "jsonc-eslint-parser": "^2.4.0",
+    "local-pkg": "catalog:prod"
   },
   "devDependencies": {
     "@eslint/config-inspector": "catalog:dev",
@@ -55,16 +68,5 @@
     "tsdown": "catalog:dev",
     "tsx": "catalog:dev",
     "typescript": "catalog:dev"
-  },
-  "dependencies": {
-    "@antfu/install-pkg": "catalog:prod",
-    "@clack/prompts": "catalog:prod",
-    "@stylistic/eslint-plugin": "catalog:prod",
-    "@typescript-eslint/eslint-plugin": "catalog:prod",
-    "@typescript-eslint/parser": "catalog:prod",
-    "eslint-flat-config-utils": "catalog:prod",
-    "eslint-plugin-unused-imports": "catalog:prod",
-    "globals": "catalog:prod",
-    "local-pkg": "catalog:prod"
   }
 }
