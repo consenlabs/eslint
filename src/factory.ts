@@ -17,6 +17,7 @@ import {
   unicorn,
 } from './configs'
 import type { ConfigNames, RuleOptions } from './typegen'
+import { yaml } from './configs/yaml'
 
 export function consenlabs(
   options: ConfigOptions,
@@ -27,6 +28,7 @@ export function consenlabs(
     jsx: enableJsx = false,
     react: enableReact = false,
     unicorn: enableUnicorn = true,
+    yaml: enableYaml = true,
   } = options
 
   let isInEditor = options.isInEditor
@@ -85,6 +87,12 @@ export function consenlabs(
       sortTsconfig(),
     )
 
+  if (enableYaml)
+    configs.push(yaml({
+      overrides: getOverrides(options, 'yaml'),
+      stylistic: stylisticOptions,
+    }))
+
   if (stylisticOptions)
     configs.push(stylistic({
       ...stylisticOptions,
@@ -105,6 +113,16 @@ export function consenlabs(
       ...configs,
       ...userConfigs as any,
     )
+    
+  if (isInEditor)
+    composer = composer
+      .disableRulesFix([
+        'unused-imports/no-unused-imports',
+        'test/no-only-tests',
+        'prefer-const',
+      ], {
+        builtinRules: () => import('eslint/use-at-your-own-risk').then(r => r.builtinRules),
+      })
 
   return composer
 }

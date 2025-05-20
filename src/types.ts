@@ -141,6 +141,13 @@ export interface ConfigOptions extends OptionsProjectType {
   jsonc?: boolean | OptionsOverrides
 
   /**
+   * Enable YAML support.
+   *
+   * @default true
+   */
+  yaml?: boolean | OptionsOverrides
+
+  /**
    * Options for eslint-plugin-unicorn.
    *
    * @default true
