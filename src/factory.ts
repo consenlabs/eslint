@@ -113,7 +113,7 @@ export function consenlabs(
       ...configs,
       ...userConfigs as any,
     )
-    
+
   if (isInEditor)
     composer = composer
       .disableRulesFix([
