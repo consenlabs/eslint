@@ -21,10 +21,11 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "tsdown --clean --dts",
+    "build": "pnpm typegen && tsdown --clean --dts",
     "dev": "npx @eslint/config-inspector --config eslint.config.js",
     "typegen": "tsx scripts/typegen.ts",
     "lint": "eslint",
+    "prepack": "nr build",
     "prepare": "simple-git-hooks"
   },
   "publishConfig": {
