@@ -1,0 +1,16 @@
+catalogs:
+  dev:
+    tsdown: ^0.11.12
+    typescript: ^5.8.3
+    "@eslint/config-inspector": ^1.0.2
+    eslint-typegen: ^2.2.0
+    '@types/node': ^22.15.19
+    tsx: ^4.19.4
+  peer:
+    "@eslint-react/eslint-plugin": ^1.49.0
+    eslint: ^9.27.0
+    eslint-plugin-react-hooks: ^5.2.0
+    eslint-plugin-react-refresh: ^0.4.20
+  prod:
+    "@stylistic/eslint-plugin": ^4.2.0
+    "@typescript-eslint/parser": ^8.32.1
