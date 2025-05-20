@@ -71,7 +71,7 @@ export async function yaml(
     },
     {
       files: ['pnpm-workspace.yaml'],
-      name: 'antfu/yaml/pnpm-workspace',
+      name: 'consenlabs/yaml/pnpm-workspace',
       rules: {
         'yaml/sort-keys': [
           'error',
