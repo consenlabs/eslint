@@ -165,7 +165,7 @@ export async function typescript(
         ? [{
             files: filesTypeAware,
             ignores: ignoresTypeAware,
-            name: 'antfu/typescript/rules-type-aware',
+            name: 'consenlabs/typescript/rules-type-aware',
             rules: {
               ...typeAwareRules,
               ...overridesTypeAware,
