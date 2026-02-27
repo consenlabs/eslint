@@ -71,9 +71,9 @@ export interface OptionsProjectType {
   type?: 'app' | 'lib'
 }
 
-export type OptionsTypescript =
-  (OptionsTypeScriptWithTypes & OptionsOverrides)
-  | (OptionsTypeScriptParserOptions & OptionsOverrides)
+export type OptionsTypescript
+  = (OptionsTypeScriptWithTypes & OptionsOverrides)
+    | (OptionsTypeScriptParserOptions & OptionsOverrides)
 
 export interface OptionsIsInEditor {
   isInEditor?: boolean
@@ -90,6 +90,10 @@ export interface OptionsUnicorn extends OptionsOverrides {
    * @default false
    */
   recommended?: boolean
+}
+
+export interface OptionsReact extends OptionsOverrides {
+  reactCompiler?: boolean
 }
 
 export interface ConfigOptions extends OptionsProjectType {
