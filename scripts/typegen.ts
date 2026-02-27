@@ -16,6 +16,7 @@ import {
   sortTsconfig,
   imports,
   unicorn,
+  nextjs,
 } from '../src'
 
 const configs = await combine(
@@ -37,6 +38,7 @@ const configs = await combine(
   sortTsconfig(),
   imports(),
   unicorn(),
+  nextjs(),
 )
 
 const configNames = configs.map(index => index.name).filter(Boolean) as string[]
