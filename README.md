@@ -86,6 +86,7 @@ All options are optional, the factory function works out-of-box with sensible de
 | `typescript` | `boolean \| OptionsTypescript` | auto-detect | Auto-detected based on `typescript` in dependencies |
 | `jsx` | `boolean` | `false` | Enable JSX stylistic rules |
 | `react` | `boolean \| OptionsOverrides` | `false` | Enable React rules (requires installing peer deps) |
+| `nextjs` | `boolean \| OptionsOverrides` | `false` | Enable Next.js rules (requires `@next/eslint-plugin-next`) |
 | `stylistic` | `boolean \| StylisticConfig` | `true` | Code style rules. Pass object for fine-grained control |
 | `jsonc` | `boolean \| OptionsOverrides` | `true` | JSON / JSONC linting + auto-sort `package.json` & `tsconfig.json` |
 | `yaml` | `boolean \| OptionsOverrides` | `true` | YAML linting |
@@ -125,6 +126,28 @@ export default consenlabs({
 ```
 
 The config auto-detects Next.js, Remix, and React Router frameworks and adjusts rules accordingly.
+
+### Next.js
+
+Next.js support is **opt-in** (`false` by default). To enable it, install the required peer dependency:
+
+```bash
+pnpm add -D @next/eslint-plugin-next
+```
+
+Then enable it in the config:
+
+```js
+// eslint.config.mjs
+import consenlabs from '@consenlabs-fe/eslint-config'
+
+export default consenlabs({
+  react: true,
+  nextjs: true,
+})
+```
+
+This applies the `recommended` and `core-web-vitals` rule sets from `@next/eslint-plugin-next`.
 
 ### Stylistic
 
@@ -192,7 +215,7 @@ export default consenlabs({
 
 ### Rules Overrides
 
-The `javascript`, `typescript`, `react`, `stylistic`, `jsonc`, `yaml` options all accept an `overrides` object to customize individual rules:
+The `javascript`, `typescript`, `react`, `nextjs`, `stylistic`, `jsonc`, `yaml` options all accept an `overrides` object to customize individual rules:
 
 ```js
 // eslint.config.mjs
@@ -303,6 +326,7 @@ If you want to apply lint and auto-fix before every commit, you can add the foll
 | [@eslint-react/eslint-plugin](https://eslint-react.xyz/) | React rules (optional) |
 | [eslint-plugin-react-hooks](https://www.npmjs.com/package/eslint-plugin-react-hooks) | React Hooks rules (optional) |
 | [eslint-plugin-react-refresh](https://github.com/ArnaudBarre/eslint-plugin-react-refresh) | React Refresh rules (optional) |
+| [@next/eslint-plugin-next](https://nextjs.org/docs/app/api-reference/config/eslint) | Next.js rules (optional) |
 
 ## License
 

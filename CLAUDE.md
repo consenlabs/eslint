@@ -35,6 +35,7 @@ src/
     ├── javascript.ts # Core JS rules (always enabled)
     ├── typescript.ts # TS rules + optional type-aware rules
     ├── react.ts      # React / JSX / Hooks (opt-in, requires peer deps)
+    ├── nextjs.ts     # Next.js rules (opt-in, requires @next/eslint-plugin-next)
     ├── stylistic.ts  # @stylistic/eslint-plugin formatting rules
     ├── imports.ts    # eslint-plugin-import-x
     ├── unicorn.ts    # eslint-plugin-unicorn (curated subset)
