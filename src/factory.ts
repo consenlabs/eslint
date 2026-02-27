@@ -15,6 +15,7 @@ import {
   sortTsconfig,
   imports,
   unicorn,
+  nextjs,
 } from './configs'
 import type { ConfigNames, RuleOptions } from './typegen'
 import { yaml } from './configs/yaml'
@@ -27,6 +28,7 @@ export function consenlabs(
     typescript: enableTypeScript = isPackageExists('typescript'),
     jsx: enableJsx = false,
     react: enableReact = false,
+    nextjs: enableNextjs = false,
     unicorn: enableUnicorn = true,
     yaml: enableYaml = true,
   } = options
@@ -104,6 +106,11 @@ export function consenlabs(
       ...typescriptOptions,
       overrides: getOverrides(options, 'react'),
       tsconfigPath,
+    }))
+
+  if (enableNextjs)
+    configs.push(nextjs({
+      overrides: getOverrides(options, 'nextjs'),
     }))
 
   let composer = new FlatConfigComposer<TypedFlatConfigItem, ConfigNames>()

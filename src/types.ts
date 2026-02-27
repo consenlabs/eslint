@@ -159,6 +159,16 @@ export interface ConfigOptions extends OptionsProjectType {
   unicorn?: boolean | OptionsUnicorn
 
   /**
+   * Enable Next.js rules.
+   *
+   * Requires installing:
+   * - `@next/eslint-plugin-next`
+   *
+   * @default false
+   */
+  nextjs?: boolean | OptionsOverrides
+
+  /**
   * Control to disable some rules in editors.
   * @default auto-detect based on the process.env
   */

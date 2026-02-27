@@ -11,6 +11,7 @@ catalogs:
     typescript: ^5.9.3
   peer:
     '@eslint-react/eslint-plugin': ^2.13.0
+    '@next/eslint-plugin-next': ^15.0.0
     eslint: ^10.0.2
     eslint-plugin-react-hooks: ^7.0.1
     eslint-plugin-react-refresh: ^0.5.2
