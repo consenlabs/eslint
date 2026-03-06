@@ -1,28 +1,91 @@
 {
   "name": "@consenlabs-fe/eslint-config",
-  "version": "0.2.3",
-  "main": "index.js",
+  "type": "module",
+  "version": "1.0.0-alpha.0",
+  "packageManager": "pnpm@10.30.3",
+  "description": "Flat eslint configuration for Consenlabs team",
   "license": "MIT",
-  "description": "Eslint configuration for Consenlabs team",
   "repository": {
     "type": "git",
     "url": "https://github.com/consenlabs/eslint"
   },
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "workspaces": [
     "packages/*"
   ],
-  "prettier": "@consenlabs-fe/prettier",
   "scripts": {
-    "build": "echo 0",
-    "sync-version": "node scripts/release.js",
-    "release": "npm run sync-version && npm publish --workspaces"
-  },
-  "devDependencies": {
-    "@consenlabs-fe/prettier": "^0.1.2",
-    "@types/node": "^14.11.8",
-    "prettier": "^2.3.2"
+    "build": "pnpm typegen && tsdown --clean --dts",
+    "dev": "npx @eslint/config-inspector --config eslint.config.js",
+    "build:inspector": "pnpm build && npx @eslint/config-inspector build",
+    "typegen": "tsx scripts/typegen.ts",
+    "lint": "eslint",
+    "prepack": "nr build",
+    "prepare": "simple-git-hooks"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "peerDependencies": {
+    "@eslint-react/eslint-plugin": "^2.11.0",
+    "@next/eslint-plugin-next": "^15.0.0",
+    "eslint": "^9.10.0 || ^10.0.0",
+    "eslint-plugin-react-hooks": "^7.0.0",
+    "eslint-plugin-react-refresh": "^0.5.0"
+  },
+  "peerDependenciesMeta": {
+    "@eslint-react/eslint-plugin": {
+      "optional": true
+    },
+    "@next/eslint-plugin-next": {
+      "optional": true
+    },
+    "eslint-plugin-react-hooks": {
+      "optional": true
+    },
+    "eslint-plugin-react-refresh": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@antfu/install-pkg": "catalog:prod",
+    "@clack/prompts": "catalog:prod",
+    "@stylistic/eslint-plugin": "catalog:prod",
+    "@typescript-eslint/eslint-plugin": "catalog:prod",
+    "@typescript-eslint/parser": "catalog:prod",
+    "eslint-flat-config-utils": "catalog:prod",
+    "eslint-plugin-import-x": "catalog:prod",
+    "eslint-plugin-jsonc": "catalog:prod",
+    "eslint-plugin-unicorn": "catalog:prod",
+    "eslint-plugin-unused-imports": "catalog:prod",
+    "eslint-plugin-yml": "catalog:prod",
+    "globals": "catalog:prod",
+    "jsonc-eslint-parser": "catalog:prod",
+    "local-pkg": "catalog:prod",
+    "yaml-eslint-parser": "catalog:prod"
+  },
+  "devDependencies": {
+    "@eslint/config-inspector": "catalog:dev",
+    "@types/node": "catalog:dev",
+    "eslint": "catalog:peer",
+    "eslint-typegen": "catalog:dev",
+    "jiti": "catalog:dev",
+    "lint-staged": "catalog:dev",
+    "simple-git-hooks": "catalog:dev",
+    "tsdown": "catalog:dev",
+    "tsx": "catalog:dev",
+    "typescript": "catalog:dev"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
