@@ -1,12 +1,57 @@
-name: Publish to npm registry
+name: Verify and publish to npm registry
 
 on:
+  pull_request:
   push:
+    branches:
+      - master
     tags:
       - 'v*'
 
+permissions:
+  contents: read
+
 jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version-file: .node-version
+          cache: pnpm
+
+      - name: Record runtime versions
+        run: |
+          node -p process.version
+          npm --version
+          pnpm --version
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build
+        run: pnpm build
+
+      - name: Lint
+        run: pnpm lint
+
+      - name: Publish dry-run
+        run: |
+          publish_tag="$(node -p "require('./package.json').version.includes('-') ? 'next' : 'latest'")"
+          pnpm publish --dry-run --access public --no-git-checks --ignore-scripts --tag "$publish_tag"
+
   publish:
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/v')
     needs: build
     runs-on: ubuntu-latest
 
@@ -27,12 +72,18 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v6
         with:
-          node-version: 'lts/*'
+          node-version-file: .node-version
           cache: pnpm
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Record runtime versions
+        run: |
+          node -p process.version
+          npm --version
+          pnpm --version
+
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Generate GitHub Changelog
         run: pnpx changelogithub
@@ -47,4 +98,6 @@ jobs:
         run: npm install -g npm@latest
 
       - name: Publish to NPM
-        run: pnpm -r publish --access public --no-git-checks --ignore-scripts
+        run: |
+          publish_tag="$(node -p "require('./package.json').version.includes('-') ? 'next' : 'latest'")"
+          pnpm -r publish --access public --no-git-checks --ignore-scripts --tag "$publish_tag"
